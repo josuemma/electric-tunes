@@ -2,6 +2,15 @@ var $ = require('jquery'),
     fs = require('fs'),
     ipc = require('ipc')
 
+var musicFolder = '/Users/Marc/Music/DaftPunk'
+
+
+
+
+
+
+
+
 
 
 //
@@ -9,7 +18,7 @@ var $ = require('jquery'),
 //
 
 // Read the audio files, write the names to the page
-fs.readdir('/Users/Marc/Music/DaftPunk', function(err, files) {
+fs.readdir(musicFolder, function(err, files) {
   for (var file of files) {
     $('#audio-files').append(`<li>${file}</li>`)
   }
@@ -23,7 +32,7 @@ var playTrack = function(target) {
 
   $('#audio-player').html(`
     <audio controls>
-      <source src="/Users/Marc/Music/DaftPunk/${fileName}" type="audio/mp3">
+      <source src="${musicFolder}/${fileName}" type="audio/mp3">
     </audio>
   `).children().first()[0].play()
 
