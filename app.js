@@ -97,3 +97,7 @@ ipc.on('player.playpause', function() {
     }
   }
 })
+
+ipc.on('console.log', function() {
+  console.log.apply(console, arguments)
+})

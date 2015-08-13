@@ -21,12 +21,11 @@ var Path = require('path'),
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the javascript object is GCed.
 var mainWindow = null
-var buildWindow = function(bounds) {
+var buildWindow = function() {
   mainWindow = new BrowserWindow({
     width: 400,
     height: 500,
     center: true,
-    resizable: false,
     'skip-taskbar': true,
     frame: false,
     show: false
@@ -40,6 +39,27 @@ var buildWindow = function(bounds) {
     // Dereference the window object
     mainWindow = null
   })
+}
+
+
+
+
+
+
+
+
+
+
+//
+// LOGGER
+//
+
+// This function sends messages to the mainWindow, to log stuff in developer tools
+var logToBrowser = function() {
+  if (mainWindow && mainWindow !== null) {
+    var baseArgs = ['console.log']
+    mainWindow.webContents.send.apply(mainWindow.webContents, baseArgs.concat([].slice.call(arguments)))
+  }
 }
 
 
@@ -74,6 +94,8 @@ var buildTray = function() {
   })
 
   appIcon.on('clicked', function(e, bounds) {
+    logToBrowser('app icon clicked', e)
+
     if (mainWindow.isVisible()) {
       mainWindow.hide()
     } else {

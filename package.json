@@ -1,17 +1,14 @@
 {
-  "name": "ElectricMusic",
+  "name": "ElectricTunes",
   "description": "<3 Electron",
   "main": "./main.js",
   "version": "0.1.0",
   "license": "",
   "keywords": [],
   "author": "Marc MacLeod",
-  "engines": {
-    "iojs": ">=2.3.0"
-  },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . ElectronTunes --platform=darwin --arch=x64 --version=0.30.4 --overwrite=true --out=dist"
+    "build": "electron-packager . ElectricTunes --platform=darwin --arch=x64 --version=0.30.4 --overwrite=true --out=dist"
   },
   "devDependencies": {
     "electron-packager": "^5.0.1",
